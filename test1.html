@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Programming Test</title>
+</head>
+<body>
+    <h2>Web Programming Test</h2>
+    <form action="/submit_test" method="POST">
+        <!-- Name -->
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <!-- Question 1: Choose one programming language -->
+        <label for="language">Question 1: Choose a Programming Language:</label><br>
+        <select id="language" name="language">
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+        </select><br><br>
+        
+        <!-- Question 2: Rate your HTML skills (1-10) -->
+        <label for="html_skill">Question 2: Rate your HTML skills (1-10):</label><br>
+        <input type="range" id="html_skill" name="html_skill" min="1" max="10"><br><br>
+        
+        <!-- Question 3: True or False - HTML is a programming language -->
+        <label>Question 3: HTML is a programming language (True/False):</label><br>
+        <input type="radio" id="true" name="html_is_programming" value="true">
+        <label for="true">True</label><br>
+        <input type="radio" id="false" name="html_is_programming" value="false">
+        <label for="false">False</label><br><br>
+        
+        <!-- Question 4: Select the frontend technologies you know -->
+        <label for="frontend">Question 4: Select all frontend technologies you know:</label><br>
+        <input type="checkbox" id="html" name="frontend" value="html">
+        <label for="html">HTML</label><br>
+        <input type="checkbox" id="css" name="frontend" value="css">
+        <label for="css">CSS</label><br>
+        <input type="checkbox" id="javascript" name="frontend" value="javascript">
+        <label for="javascript">JavaScript</label><br><br>
+        
+        <!-- Question 5: Upload a project file -->
+        <label for="file_upload">Question 5: Upload your project file:</label><br>
+        <input type="file" id="file_upload" name="file_upload"><br><br>
+        
+        <!-- Submit -->
+        <input type="submit" value="Submit Test">
+    </form>
+</body>
+</html>
