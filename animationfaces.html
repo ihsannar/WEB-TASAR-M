@@ -1,146 +1,141 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animasyon</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animasyonlu Yüzler</title>
+    <style>
+        /* Genel ayarlar */
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            flex-wrap: wrap;
+        }
 
+        .face {
+            width: 150px;
+            height: 150px;
+            background-color: #ffcc4d;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
 
-  .container {
-    display: flex;
-    gap: 20px;
-    margin-top: 50px;
-    justify-content: center;
-  }
+        /* Gözler */
+        .eye {
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 45px;
+        }
 
-  
-  .animated-div {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+        /* Yüz 1: Göz kırpan */
+        .face.blink .eye.left, .face.blink .eye.right {
+            animation: blink 3s infinite;
+        }
 
-  .goz {
-    width: 17px;
-    height: 14px;
-    background-color: yellow;
-    border-radius: 50%;
-    position: absolute;
-    top: 30%;
-  }
+        /* Göz kırpma animasyonu */
+        @keyframes blink {
+            0%, 20%, 100% { height: 20px; }
+            10%, 15% { height: 5px; }
+        }
 
-  .goz.left {
-    left: 30%;
-  }
+        /* Yüz 2: Yanıp sönen gözler */
+        .face.flash .eye {
+            animation: flash 1s infinite;
+        }
 
-  .goz.right {
-    right: 30%;
-  }
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
 
-  
-  .agiz {
-    width: 30px;
-    height: 5px;
-    background-color: yellow;
-    position: absolute;
-    top: 65%;
-  }
+        /* Yüz 3: Gözleri yukarı-aşağı hareket eden */
+        .face.bounce .eye {
+            animation: bounce 2s infinite;
+        }
 
-  
-  .up-down {
-    background-color: navy;
-    animation: upDown 2s ease-in-out infinite;
-  }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
-  @keyframes upDown {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-  }
+        /* Ağız */
+        .mouth {
+            width: 80px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 0 0 50px 50px;
+            position: absolute;
+            bottom: 35px;
+            overflow: hidden;
+        }
 
-  
-  .scale-color {
-    background-color: navy;
-    animation: scaleColor 3s ease-in-out infinite;
-  }
+        /* Yüz 1: Gülümseyen ağız */
+        .face.blink .mouth {
+            animation: smile 2s infinite;
+        }
 
-  @keyframes scaleColor {
-    0%, 100% { transform: scale(1); background-color: navy; }
-    50% { transform: scale(1.2); background-color: lime; }
-  }
+        /* Gülümseme animasyonu */
+        @keyframes smile {
+            0%, 100% { height: 20px; }
+            50% { height: 10px; }
+        }
 
+        /* Yüz 2: Küçükten büyüğe değişen ağız */
+        .face.flash .mouth {
+            animation: growShrink 1.5s infinite;
+        }
 
-  .fade-in-out {
-    background-color: navy;
-    animation: fadeInOut 4s ease-in-out infinite;
-  }
+        @keyframes growShrink {
+            0%, 100% { width: 50px; height: 20px; }
+            50% { width: 70px; height: 30px; }
+        }
 
-  @keyframes fadeInOut {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
+        /* Yüz 3: Yana doğru kaydırmalı ağız */
+        .face.bounce .mouth {
+            animation: slide 2s infinite;
+        }
 
-  
-  .left-right {
-    background-color: navy;
-    animation: leftRight 2s ease-in-out infinite;
-  }
+        @keyframes slide {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
 
-  @keyframes leftRight {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(20px); }
-  }
-
-  
-  .rotate {
-    background-color: navy;
-    animation: rotate 2s linear infinite;
-  }
-
-  @keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-</style>
+        /* Her yüz için farklı göz konumları */
+        .face .eye.left { left: 40px; }
+        .face .eye.right { right: 40px; }
+    </style>
 </head>
 <body>
-    
-<div class="container">
-  <div class="animated-div up-down">
-    <div class="goz left"></div>
-    <div class="goz right"></div>
-    <div class="agiz"></div>
-  </div>
-  
-  <div class="animated-div scale-color">
-    <div class="goz left"></div>
-    <div class="goz right"></div>
-    <div class="agiz"></div>
-  </div>
-  
-  <div class="animated-div fade-in-out">
-    <div class="goz left"></div>
-    <div class="goz right"></div>
-    <div class="agiz"></div>
-  </div>
-  
-  <div class="animated-div left-right">
-    <div class="goz left"></div>
-    <div class="goz right"></div>
-    <div class="agiz"></div>
-  </div>
-  
-  <div class="animated-div rotate">
-    <div class="goz left"></div>
-    <div class="goz right"></div>
-    <div class="agiz"></div>
-  </div>
-</div>
+    <!-- Yüz 1: Göz kırpan ve gülümseyen -->
+    <div class="face blink">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="mouth"></div>
+    </div>
 
+    <!-- Yüz 2: Gözleri yanıp sönen ve büyüyüp küçülen ağız -->
+    <div class="face flash">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="mouth"></div>
+    </div>
+
+    <!-- Yüz 3: Yukarı-aşağı hareket eden gözler ve yana kayan ağız -->
+    <div class="face bounce">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="mouth"></div>
+    </div>
 </body>
 </html>
