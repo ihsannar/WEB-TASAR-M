@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Tasks</title>
+  <style>
+    /* Styles for the popup announcement */
+    #announcement {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      padding: 20px;
+      background-color: #f9edbe;
+      border: 2px solid #f08a24;
+      border-radius: 10px;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s, visibility 1s;
+    }
+    
+    #announcement.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Canvas styling */
+    canvas {
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Interactive Web Tasks</h1>
+
+<!-- Announcement Popup -->
+<div id="announcement">This is an important announcement!</div>
+
+<!-- Canvas for colored squares -->
+<canvas id="colorCanvas" width="500" height="500"></canvas>
+
+<script>
+  // Task 1: Announcement Popup
+  const announcement = document.getElementById('announcement');
+
+  // Show announcement after 1 second
+  setTimeout(() => {
+    announcement.classList.add('show');
+  }, 1000);
+
+  // Hide announcement after 5 seconds
+  setTimeout(() => {
+    announcement.classList.remove('show');
+  }, 6000);
+
+  // Task 3: Drawing 10x10 colored squares on a canvas
+  const canvas = document.getElementById('colorCanvas');
+  const ctx = canvas.getContext('2d');
+
+  const squareSize = 50; // Size of each square
+  for (let row = 0; row < 10; row++) {
+    for (let col = 0; col < 10; col++) {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+      ctx.fillRect(col * squareSize, row * squareSize, squareSize, squareSize);
+    }
+  }
+</script>
+
+</body>
+</html>
