@@ -18,7 +18,7 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br>
         <button type="submit">Kaydet</button>
-    </form>
+    <form>
 
     <!-- Form 2: Kişi Arama -->
     <h2>Kişi Bul</h2>
@@ -26,7 +26,7 @@
         <label for="searchName">Ad:</label>
         <input type="text" id="searchName" name="searchName" required>
         <button type="submit">Bul</button>
-    </form>
+    <form>
 
     <!-- Arama Sonuçları -->
     <div id="searchResults">
@@ -35,6 +35,6 @@
         <h3>Sonuç:</h3>
         <p>Soyad: Soyad bilgisi burada gösterilecek.</p>
         <p>Email: Email bilgisi burada gösterilecek.</p>
-    </div>
-</body>
-</html>
+    <div>
+<body>
+<html>
