@@ -9,25 +9,34 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f9;
+            background: linear-gradient(to bottom, #ff7eb3, #ff758c, #ff6f5e, #ffaa33);
             color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         div {
             text-align: center;
-            padding: 50px;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: white;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 800px;
         }
         
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff6f5e;
         }
         
         h3 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #ffaa33;
         }
         
         ul {
@@ -36,7 +45,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
         }
         
         li {
@@ -45,19 +54,18 @@
         
         a {
             text-decoration: none;
-            padding: 10px 20px;
-            background: white;
-            color: #2575fc;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #ff7eb3, #ffaa33);
+            color: white;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
         
         a:hover {
-            background: #2575fc;
-            color: white;
-            transform: scale(1.1);
+            background: linear-gradient(135deg, #ffaa33, #ff7eb3);
+            transform: translateY(-5px);
         }
     </style>
 </head>
