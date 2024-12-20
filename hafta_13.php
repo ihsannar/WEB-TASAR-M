@@ -10,7 +10,7 @@
 
     <!-- Form 1: Kişi Ekleme -->
     <h2>Kişi Ekle</h2>
-    <form id="addForm" method="POST" action="/add_person">
+    <form id="addForm" method="post" action="/add_person">
         <label for="name">Ad:</label>
         <input type="text" id="name" name="name" required><br>
         <label for="surname">Soyad:</label>
@@ -22,7 +22,7 @@
 
     <!-- Form 2: Kişi Arama -->
     <h2>Kişi Bul</h2>
-    <form id="searchForm" method="GET" action="/search_person">
+    <form id="searchForm" method="get" action="/search_person">
         <label for="searchName">Ad:</label>
         <input type="text" id="searchName" name="searchName" required>
         <button type="submit">Bul</button>
@@ -30,11 +30,11 @@
 
     <!-- Arama Sonuçları -->
     <div id="searchResults">
-        {% if result %}
+        <!-- Replace template logic with backend implementation -->
+        <!-- Example: Use backend framework like Flask or Express.js -->
         <h3>Sonuç:</h3>
-        <p>Soyad: {{ result.surname }}</p>
-        <p>Email: {{ result.email }}</p>
-        {% endif %}
+        <p>Soyad: Soyad bilgisi burada gösterilecek.</p>
+        <p>Email: Email bilgisi burada gösterilecek.</p>
     </div>
 </body>
 </html>
