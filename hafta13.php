@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ekle'])) {
     $stmt->bind_param("sss", $ad, $soyad, $email);
 
     if ($stmt->execute()) {
-        echo "Kışi başarıyla eklendi.";
+        echo "Kişi başarıyla eklendi.";
     } else {
         echo "Hata: " . $conn->error;
     }
@@ -49,56 +49,121 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ara'])) {
     $stmt->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kişi Yönetimi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Kişi Ekle</h1>
-    <form method="POST">
-        <label for="ad">Ad:</label>
-        <input type="text" name="ad" id="ad" required>
-        <br>
-        <label for="soyad">Soyad:</label>
-        <input type="text" name="soyad" id="soyad" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
-        <br>
-        <button type="submit" name="ekle">Ekle</button>
-    </form>
+    <h1>Kişi Yönetimi</h1>
+    <div class="container">
+        <form method="POST">
+            <h2>Kişi Ekle</h2>
+            <label for="ad">Ad:</label>
+            <input type="text" name="ad" id="ad" required>
+            <label for="soyad">Soyad:</label>
+            <input type="text" name="soyad" id="soyad" required>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+            <button type="submit" name="ekle">Ekle</button>
+        </form>
 
-    <h1>Kişi Ara</h1>
-    <form method="POST">
-        <label for="arama">Arama:</label>
-        <input type="text" name="arama" id="arama" required>
-        <br>
-        <button type="submit" name="ara">Ara</button>
-    </form>
+        <form method="POST">
+            <h2>Kişi Ara</h2>
+            <label for="arama">Arama:</label>
+            <input type="text" name="arama" id="arama" required>
+            <button type="submit" name="ara">Ara</button>
+        </form>
 
-    <?php if (!empty($sonuclar)) : ?>
-        <h2>Arama Sonuçları</h2>
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Ad</th>
-                <th>Soyad</th>
-                <th>Email</th>
-            </tr>
-            <?php foreach ($sonuclar as $kisi) : ?>
+        <?php if (!empty($sonuclar)) : ?>
+            <h2>Arama Sonuçları</h2>
+            <table>
                 <tr>
-                    <td><?= htmlspecialchars($kisi['id']) ?></td>
-                    <td><?= htmlspecialchars($kisi['ad']) ?></td>
-                    <td><?= htmlspecialchars($kisi['soyad']) ?></td>
-                    <td><?= htmlspecialchars($kisi['email']) ?></td>
+                    <th>ID</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Email</th>
                 </tr>
-            <?php endforeach; ?>
-        </table>
-    <?php endif; ?>
-
+                <?php foreach ($sonuclar as $kisi) : ?>
+                    <tr>
+                        <td><?= htmlspecialchars($kisi['id']) ?></td>
+                        <td><?= htmlspecialchars($kisi['ad']) ?></td>
+                        <td><?= htmlspecialchars($kisi['soyad']) ?></td>
+                        <td><?= htmlspecialchars($kisi['email']) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
