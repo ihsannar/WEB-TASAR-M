@@ -13,6 +13,18 @@ if ($conn->connect_error) {
     die("Bağlantı başarısız: " . $conn->connect_error);
 }
 
+// Tablonun doğru şekilde oluşturulduğunu kontrol edin
+$sql = "CREATE TABLE IF NOT EXISTS kisi (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ad VARCHAR(255) NOT NULL,
+    soyad VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
+)";
+
+if (!$conn->query($sql)) {
+    die("Tablo oluşturulurken hata: " . $conn->error);
+}
+
 // Formdan veri eklendiğinde
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ekle'])) {
     $ad = $_POST['ad'];
@@ -24,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ekle'])) {
     $stmt->bind_param("sss", $ad, $soyad, $email);
 
     if ($stmt->execute()) {
-        echo "Kişi başarıyla eklendi.";
+        echo "Kışi başarıyla eklendi.";
     } else {
         echo "Hata: " . $conn->error;
     }
@@ -54,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ara'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kişi Yönetimi</title>
+    <title>Kışi Yönetimi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -125,10 +137,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ara'])) {
     </style>
 </head>
 <body>
-    <h1>Kişi Yönetimi</h1>
+    <h1>Kışi Yönetimi</h1>
     <div class="container">
         <form method="POST">
-            <h2>Kişi Ekle</h2>
+            <h2>Kışi Ekle</h2>
             <label for="ad">Ad:</label>
             <input type="text" name="ad" id="ad" required>
             <label for="soyad">Soyad:</label>
@@ -139,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ara'])) {
         </form>
 
         <form method="POST">
-            <h2>Kişi Ara</h2>
+            <h2>Kışi Ara</h2>
             <label for="arama">Arama:</label>
             <input type="text" name="arama" id="arama" required>
             <button type="submit" name="ara">Ara</button>
