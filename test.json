@@ -1,7 +1,7 @@
-const quizData = {
-  "htmlQuestions": [
-    {
-      "id": 1,
+{
+    "htmlQuestions": [
+      {
+        "id": 1,
       "question": "HTML nedir?",
       "options": [
         "A: HyperText Markup Language",
@@ -109,6 +109,6 @@ const quizData = {
         "D: ' Yorum"
       ],
       "answer": "A"
-    }
-  ]
-};
+      }
+    ]
+  }
