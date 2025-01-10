@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daireler</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #1e293b; /* Daha koyu bir arka plan */
+    }
+    canvas {
+      display: block;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5); /* Daha yoğun gölge efekti */
+      border-radius: 20px; /* Daha belirgin köşeler */
+      background-color: #ffffff; /* Beyaz arka plan */
+    }
+  </style>
+</head>
+<body>
+  <canvas id="circleCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('circleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Tuvalin boyutlarını belirleyin
+    const canvasWidth = 500; // Genişlik
+    const canvasHeight = 500; // Yükseklik
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+
+    // Daire özelliklerini ayarlayın
+    const circleRadius = 25; // Daire yarıçapı
+    const padding = 30; // Daireler arası boşluk
+    const startX = padding + circleRadius; // İlk dairenin X konumu
+    const startY = padding + circleRadius; // İlk dairenin Y konumu
+
+    const colors = [
+      '#ff6f61', // Kırmızı ton
+      '#6fa8dc', // Mavi ton
+      '#93c47d', // Yeşil ton
+      '#f6b26b', // Turuncu ton
+      '#c27ba0', // Mor ton
+      '#ffd966', // Sarı ton
+    ];
+
+    // Daireleri çizin
+    for (let row = 0; row < 6; row++) { 
+      for (let col = 0; col < 6; col++) { 
+        const x = startX + col * (circleRadius * 2 + padding); 
+        const y = startY + row * (circleRadius * 2 + padding);
+
+        ctx.strokeStyle = colors[(row + col) % colors.length]; // Daha çeşitli renkler
+        ctx.lineWidth = 5; // Kenar kalınlığı artırıldı
+
+        ctx.beginPath();
+        ctx.arc(x, y, circleRadius, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
+  </script>
+</body>
+</html>
