@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastgele Arka Plan ve Resim Göster/Gizle</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e293b; /* Koyu arka plan */
+            color: #ffffff; /* Açık metin rengi */
+            transition: background-color 0.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #facc15; /* Sarı ton başlık rengi */
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .image-container img {
+            width: 180px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Daha güçlü gölge efekti */
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 1;
+        }
+
+        .image-container img.hidden {
+            opacity: 0;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        button {
+            background-color: #2563eb; /* Mavi ton */
+            color: #ffffff;
+            border: none;
+            padding: 12px 18px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #1d4ed8; /* Daha koyu mavi */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Rastgele Arka Plan ve Resim Göster/Gizle</h1>
+
+<div class="image-container">
+    <img id="image1" src="https://via.placeholder.com/200" class="hidden" alt="Random Image 1">
+    <img id="image2" src="https://via.placeholder.com/200" class="hidden" alt="Random Image 2">
+    <img id="image3" src="https://via.placeholder.com/200" class="hidden" alt="Random Image 3">
+</div>
+
+<div class="buttons-container">
+    <button onclick="toggleImage('image1')">Resim 1 Göster/Gizle</button>
+    <button onclick="toggleImage('image2')">Resim 2 Göster/Gizle</button>
+    <button onclick="toggleImage('image3')">Resim 3 Göster/Gizle</button>
+</div>
+
+<script>
+    const backgroundColors = ['#facc15', '#f87171', '#34d399', '#60a5fa', '#fbbf24', '#a78bfa', '#f472b6', '#38bdf8', '#a3e635', '#ef4444'];
+
+    const images = [
+        'https://picsum.photos/id/237/200/300',
+        'https://picsum.photos/id/238/200/300',
+        'https://picsum.photos/id/239/200/300',
+        'https://picsum.photos/id/240/200/300',
+        'https://picsum.photos/id/241/200/300',
+        'https://picsum.photos/id/242/200/300',
+        'https://picsum.photos/id/243/200/300',
+        'https://picsum.photos/id/244/200/300',
+        'https://picsum.photos/id/245/200/300',
+        'https://picsum.photos/id/246/200/300'
+    ];
+
+    window.onload = function () {
+        changeBackground();
+        showRandomImage();
+    };
+
+    function changeBackground() {
+        const randomColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
+        document.body.style.backgroundColor = randomColor;
+    }
+
+    function showRandomImage() {
+        const randomIndexes = Array.from({ length: 3 }, () => Math.floor(Math.random() * images.length));
+        document.getElementById('image1').src = images[randomIndexes[0]];
+        document.getElementById('image2').src = images[randomIndexes[1]];
+        document.getElementById('image3').src = images[randomIndexes[2]];
+        document.getElementById('image1').classList.remove('hidden');
+        document.getElementById('image2').classList.remove('hidden');
+        document.getElementById('image3').classList.remove('hidden');
+    }
+
+    function toggleImage(imageId) {
+        const image = document.getElementById(imageId);
+        image.classList.toggle('hidden');
+    }
+</script>
+
+</body>
+</html>
